@@ -13,7 +13,8 @@ public class BonusScore implements GameScore {
      * @return total user score
      */
     @Override
-    public int calculateScore(int correctCount, int incorrectCount) {
+    public int calculateScore(int correctCount, int incorrectCount) throws GameScoreException {
+        if (correctCount <0 | incorrectCount < 0) throw new GameScoreException(GameScoreException.NEGATIVE_COUNTS);
         return 0;
     }
 }

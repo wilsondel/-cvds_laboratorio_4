@@ -2,7 +2,7 @@ package hangman.model;
 
 import hangman.model.exceptions.GameScoreException;
 
-public class PowerScore implements GameScore {
+public class PowerBonusScore implements GameScore {
 
     /**
      * @pre it starts with 0 points
