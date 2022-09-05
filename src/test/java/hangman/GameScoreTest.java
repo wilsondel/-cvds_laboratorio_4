@@ -2,7 +2,7 @@ package hangman;
 
 import hangman.model.BonusScore;
 import hangman.model.OriginalScore;
-import hangman.model.PowerBonusScore;
+import hangman.model.PowerScore;
 import hangman.model.exceptions.GameScoreException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -30,7 +30,7 @@ import static org.junit.Assert.fail;
  * INVALID: (-inf,0]
  * * Limit: 0
  *
- * PowerBonusScore
+ * PowerScore
  * VALID: [0,500]
  * INVALID: (-inf,0) V (500,inf)
  *
@@ -44,7 +44,7 @@ public class GameScoreTest {
 
     OriginalScore originalScore = new OriginalScore();
     BonusScore bonusScore = new BonusScore();
-    PowerBonusScore powerBonusScore = new PowerBonusScore();
+    PowerScore powerScore = new PowerScore();
 
 
     // originalScore
@@ -131,7 +131,7 @@ public class GameScoreTest {
             int correct = 0;
             int incorrect = 8;
             int actualResult = bonusScore.calculateScore(correct,incorrect);
-            int expected = correct * 10 - incorrect * 5;
+            int expected = 0;
             Assert.assertEquals(expected, actualResult);
 
         } catch (GameScoreException e) {
@@ -167,23 +167,24 @@ public class GameScoreTest {
         }
     }
 
-    // powerBonusScore
+    // powerScore
     @Test
-    public void givenANumberPowerBonusScoreWhenNegativeThenThrowError() {
+    public void givenANumberPowerScoreWhenNegativeThenThrowError() {
         try {
-            bonusScore.calculateScore(-50,-80);
+            powerScore.calculateScore(-50,-80);
             fail("calculateScore cannot accept negative values for correctCount or incorrectCount");
         } catch (GameScoreException e) {
             Assert.assertTrue(true);
         }
     }
 
-    public void givenCorrectPowerBonusScoreWhenIs0ThenResult0() {
+    @Test
+    public void givenCorrectPowerScoreWhenIs0ThenResult0() {
         try {
             int correct = 0;
             int incorrect = 0;
-            int actualResult = bonusScore.calculateScore(correct,incorrect);
-            int expected = (5^correct) - incorrect * 8;
+            int actualResult = powerScore.calculateScore(correct,incorrect);
+            int expected = 0;
             Assert.assertEquals(expected, actualResult);
 
         } catch (GameScoreException e) {
@@ -191,12 +192,13 @@ public class GameScoreTest {
         }
     }
 
-    public void givenCorrectPowerBonusScoreWhenIs4ThenResult500() {
+    @Test
+    public void givenCorrectPowerScoreWhenIs4ThenResult500() {
         try {
             int correct = 4;
             int incorrect = 0;
-            int actualResult = bonusScore.calculateScore(correct,incorrect);
-            int expected = (5^correct) - incorrect * 8;
+            int actualResult = powerScore.calculateScore(correct,incorrect);
+            int expected = 500;
             Assert.assertEquals(expected, actualResult);
 
         } catch (GameScoreException e) {
@@ -204,12 +206,13 @@ public class GameScoreTest {
         }
     }
 
-    public void givenIncorrectPowerBonusScoreWhenIs4ThenResult0() {
+    @Test
+    public void givenIncorrectPowerScoreWhenIs4ThenResult0() {
         try {
             int correct = 0;
             int incorrect = 4;
-            int actualResult = bonusScore.calculateScore(correct,incorrect);
-            int expected = (5^correct) - incorrect * 8;
+            int actualResult = powerScore.calculateScore(correct,incorrect);
+            int expected = 0;
             Assert.assertEquals(expected, actualResult);
 
         } catch (GameScoreException e) {
