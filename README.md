@@ -63,7 +63,7 @@ Se han propuesto 3 diferentes esquemas, los cuales se describen a continuación:
 	```
 
 5. Actualice el archivo `pom.xml` e incluya las dependencias para la ultima versión de JUnit y la versión del compilador de Java a la versión 8 .
-   
+   ![img_6.png](img_6.png)
 
 6. Teniendo en cuenta dichas especificaciones, en la clase donde se
    implementarán las pruebas (GameScoreTest), en los
@@ -74,6 +74,8 @@ Se han propuesto 3 diferentes esquemas, los cuales se describen a continuación:
 
 7. Para cada clase de equivalencia y condición de frontera, implemente
    una prueba utilizando JUnit.
+    * Para cada prueba se colocó cuál clase de equivalencia es entre paréntesis ejemplo: (Second Case)
+    ![img_8.png](img_8.png)
 
 8. Haga commit de lo realizado hasta ahora. Desde la terminal:
 
@@ -81,10 +83,12 @@ Se han propuesto 3 diferentes esquemas, los cuales se describen a continuación:
 	git add .			
 	git commit -m "implementación pruebas"
 	```
+    ![img_10.png](img_10.png)
+
 9. Realice la implementación de los 'cascarones' realizados anteriormente.
    Asegúrese que todas las pruebas unitarias creadas en los puntos anteriores
    se ejecutan satisfactoriamente.
-
+    ![img_9.png](img_9.png)
 10. Al finalizar haga un nuevo commit:
 
 	```bash		

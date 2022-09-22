@@ -37,7 +37,7 @@ public class GameScoreTest {
     public void givenANumberOriginalScoreWhenNegativeThenThrowError() {
         try {
             originalScore.calculateScore(-50,0);
-            fail("calculateScore cannot accept negative values for correctCount or incorrectCount");
+            fail("calculateScore cannot accept negative values for correctCount");
         } catch (GameScoreException e) {
             Assert.assertTrue(true);
         }
