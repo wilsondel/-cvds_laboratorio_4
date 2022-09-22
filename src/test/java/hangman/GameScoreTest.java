@@ -12,32 +12,15 @@ import static org.junit.Assert.fail;
 
 /**
  * Equivalence class
- * Original Score
- * VALID: [0,100]
- * INVALID: (-inf,0) V (100,inf)
  *
- * correctCount and incorrectCount
- * VALID: [0,inf)
- * INVALID: (-inf,0]
- * * Limit: 0
- *
- * Bonus Score
- * VALID: [0,inf)
- * INVALID: (-inf,0)
- *
- * correctCount and incorrectCount
- * VALID: [0,inf)
- * INVALID: (-inf,0]
- * * Limit: 0
- *
- * PowerScore
- * VALID: [0,500]
- * INVALID: (-inf,0) V (500,inf)
- *
- * correctCount and incorrectCount
- * VALID: [0,inf)
- * INVALID: (-inf,0]
- * * Limit: 0
+ *  Para calculateScore sus clases de equivalencia serian:
+ * correctCount > 0 and incorrectCount > 0  (Valid)
+ * correctCount < 0 and incorrectCount > 0  (Invalid)
+ * correctCount > 0 and incorrectCount < 0  (Invalid)
+ * correctCount < 0 and incorrectCount < 0  (Invalid)
+ * correctCount <  incorrectCount  (Valid)
+ * correctCount >  incorrectCount  (Valid)
+ * correctCount = 0 and incorrectCount = 0  (Limit)
  *
  */
 public class GameScoreTest {
@@ -47,7 +30,9 @@ public class GameScoreTest {
     PowerScore powerScore = new PowerScore();
 
 
-    // originalScore
+
+
+    // originalScore (Second case)
     @Test
     public void givenANumberOriginalScoreWhenNegativeThenThrowError() {
         try {
@@ -58,6 +43,7 @@ public class GameScoreTest {
         }
     }
 
+    // originalScore (Limit case)
     @Test
     public void givenCorrectIncorrectOriginalScoreWhenIs0ThenResult100() {
         try {
@@ -72,6 +58,7 @@ public class GameScoreTest {
         }
     }
 
+    // originalScore (First case)
     @Test
     public void givenCorrectOriginalScoreWhenIs0ThenResult100() {
         try {
@@ -86,22 +73,9 @@ public class GameScoreTest {
         }
     }
 
+    // originalScore (Third case)
     @Test
-    public void givenIncorrectOriginalScoreWhenIs0ThenResultChange() {
-        try {
-            int correct = 0;
-            int incorrect = 3;
-            int actualResult = originalScore.calculateScore(correct,incorrect);
-            int expected = 100 - incorrect * 10;
-            Assert.assertEquals(expected, actualResult);
-
-        } catch (GameScoreException e) {
-            fail();
-        }
-    }
-
-    @Test
-    public void givenCorrectIncorrectOriginalScoreWhenPositiveThenGiveResult() {
+    public void givenCorrectOriginalScoreWhenPositiveThenGiveResult() {
         try {
             int correct = 2;
             int incorrect = 4;
@@ -114,7 +88,7 @@ public class GameScoreTest {
         }
     }
 
-    // bonusScore
+    // bonusScore (First case)
     @Test
     public void givenANumberBonusScoreWhenNegativeThenThrowError() {
         try {
@@ -125,6 +99,7 @@ public class GameScoreTest {
         }
     }
 
+    // bonusScore (Fifth case)
     @Test
     public void givenIncorrectBonusScoreWhenIs8ThenResult0() {
         try {
@@ -139,6 +114,7 @@ public class GameScoreTest {
         }
     }
 
+    // bonusScore (Limit case)
     @Test
     public void givenCorrectBonusScoreWhenIs0ThenResult0() {
         try {
@@ -153,21 +129,8 @@ public class GameScoreTest {
         }
     }
 
-    @Test
-    public void givenCorrectIncorrectBonusScoreWhenPositiveThenGiveResult() {
-        try {
-            int correct = 4;
-            int incorrect = 8;
-            int actualResult = bonusScore.calculateScore(correct,incorrect);
-            int expected = correct * 10 - incorrect * 5;
-            Assert.assertEquals(expected, actualResult);
 
-        } catch (GameScoreException e) {
-            fail();
-        }
-    }
-
-    // powerScore
+    // powerScore (First case)
     @Test
     public void givenANumberPowerScoreWhenNegativeThenThrowError() {
         try {
@@ -178,6 +141,7 @@ public class GameScoreTest {
         }
     }
 
+    // powerScore (Limit case)
     @Test
     public void givenCorrectPowerScoreWhenIs0ThenResult0() {
         try {
@@ -192,6 +156,7 @@ public class GameScoreTest {
         }
     }
 
+    // powerScore (Sixth case)
     @Test
     public void givenCorrectPowerScoreWhenIs4ThenResult500() {
         try {
@@ -206,6 +171,7 @@ public class GameScoreTest {
         }
     }
 
+    // powerScore (Fifth case)
     @Test
     public void givenIncorrectPowerScoreWhenIs4ThenResult0() {
         try {

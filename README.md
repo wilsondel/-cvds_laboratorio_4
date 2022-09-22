@@ -1,3 +1,4 @@
+
 ### Escuela Colombiana de Ingeniería
 
 ### Procesos de Desarrollo de Software
@@ -5,19 +6,20 @@
 ### Desarrollo Dirigido por Pruebas + DIP + DI + Contenedores Livianos
 
 
-Para este taller se va a trabajar sobre el juego del ahorcado.
+#### Integrantes: wilson el REEEEeeeeeeeeeeeeeeeeEE canson, juanita la linda :)
 
-El sistema actual de puntuación del juego comienza en 100 puntos y va
-descontando 10 puntos cada vez que se propone una letra incorrecta.
+## Introducción
 
-Algunos usuarios han propuesto diferentes esquemas para realizar la
-puntuación, los cuales se describen a continuación:
+Para este laboratorio se va a trabajar sobre un juego de ahorcado.
+El sistema inicial de puntuación del juego comienza en 100 puntos y va descontando 10 puntos cada vez que se propone una letra incorrecta.
+
+Se han propuesto 3 diferentes esquemas, los cuales se describen a continuación:
 
 * OriginalScore: 
     * Es el esquema actual, se inicia con 100 puntos.
     * No se bonifican las letras correctas.
     * Se penaliza con 10 puntos con cada letra incorrecta.
-    * El puntaje minimo es 0.
+    * El puntaje mínimo es 0.
 
 * BonusScore: 
     * El juego inicia en 0 puntos.
@@ -31,26 +33,27 @@ puntuación, los cuales se describen a continuación:
     * Se penaliza con 8 puntos cada letra incorrecta.
     * El puntaje mínimo es 0
     * Si con las reglas anteriores sobrepasa 500 puntos, el puntaje es
-      500.
-
-Lo anterior, se traduce en el siguiente modelo, donde se aplica el
-principio de inversión de dependencias:
+      500 .
 
 
-![](img/model.png)
+
 
 
 ### Parte I
 
 1. Clone el proyecto (no lo descargue!).
-   
+   ![img.png](img.png)
+
 2. A partir del código existente, implemente sólo los cascarones del
    modelo antes indicado.
-
+![img_2.png](img_2.png)
 3. Haga la especificación de los métodos calculateScore (de las tres
    variantes de GameScore), a partir de las especificaciones
    generales dadas anteriormente. Recuerde tener en cuenta: @pre,
    @pos, @param, @throws.
+    ![img_3.png](img_3.png)
+    ![img_4.png](img_4.png)
+    ![img_5.png](img_5.png)
 
 4. Haga commit de lo realizado hasta ahora. Desde la terminal:
 
@@ -67,6 +70,7 @@ principio de inversión de dependencias:
    comentarios iniciales, especifique las clases de equivalencia para
    las tres variantes de GameScore, e identifique
    condiciones de frontera. 
+    ![img_7.png](img_7.png)
 
 7. Para cada clase de equivalencia y condición de frontera, implemente
    una prueba utilizando JUnit.
